@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block nav %}
+<nav>
+	<a href="{% url 'flux' %}">Flux</a>
+	<a href="{% url 'posts' %}">Posts</a>
+	<a href="{% url 'subscribed' %}">Abonnements</a>
+	<a href="{% url 'logout' %}">Se déconnecter</a>
+</nav>
+{% endblock %}
+{% block content %}
+	<h2> Posts </h2>
+{% endblock %}

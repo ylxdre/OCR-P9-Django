@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block nav %}
+<nav class="navbar navbar-light ml-auto">
+		<a href="{% url 'flux' %}">Flux</a>
+		<a href="{% url 'posts' %}">Posts</a>
+		<a href="{% url 'subscribed' %}">Abonnements</a>
+	<form class="form-inline" method="post" action="{% url 'logout' %}">
+			{% csrf_token %}
+	<button type="submit" class="btn btn-light">Se déconnecter</button>
+	</form>
+</nav>
+
+
+{% endblock %}
+{% block content %}
+	<h2> Bienvenue {{ user.name }}</h2>
+{% endblock %}
