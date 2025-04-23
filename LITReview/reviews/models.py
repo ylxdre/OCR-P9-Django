@@ -14,7 +14,7 @@ class Ticket(models.Model):
     time_created = models.DateTimeField(auto_now_add=True)
 
 
-    
+
 class Review(models.Model):
     ticket = models.ForeignKey(to=Ticket, on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(
