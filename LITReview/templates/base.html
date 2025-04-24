@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="fr">
 	<head>
         	<meta charset="utf-8">
@@ -10,12 +9,31 @@
 	</head>
 	<body>
 		<header>
-			<div class="container-fluid border border-3 border-secondary-subtle">
-				<div class="row text-center">
-					<h1> LITReview </h1>
+			<nav class="navbar navbar-expand-lg">
+				<div class="container-fluid border border-3 border-secondary-subtle">
+					<div class="col d-flex justify-content-center">
+						<h1> LITReview </h1>
+					</div>
+					{% if user.is_authenticated %}
+					<ul class="navbar-nav">
+                				<li class="nav-item">
+                    					<a href="{% url 'home' %}" class="nav-link {% if navbar == 'home' %}active{% endif %}">Flux</a>
+                				</li>
+                				<li class="nav-item">
+                    					<a href="{% url 'posts' %}" class="nav-link {% if navbar == 'posts' %}active{% endif %}">Posts</a>
+                				</li>
+                				<li class="nav-item">
+                    					<a href="{% url 'subscribed' %}" class="nav-link {% if navbar == 'subscribed' %}active{% endif %}">Abonnements</a>
+                				</li>
+							<form class="form-inline" method="post" action="{% url 'logout' %}">
+								{% csrf_token %}
+							<button type="submit" class="btn btn-light">Se déconnecter</button>
+							</form>
+            				</ul>
+            				{% endif %}
 				</div>
-			</div>
-			{% block nav %}{% endblock %}
+			</nav>
+
 		</header>
 
 		{% block content %}{% endblock %}

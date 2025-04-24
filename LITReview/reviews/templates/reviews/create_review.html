@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col d-flex justify-content-center">
+			<h2>Créer une critique</h2>
+		</div>
+	</div>
+	<div class="row border border-3 border-secondary-subtle">
+		<h3> Livre/Article </h3>
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<label for="title">Titre</label>
+			<div class="d-flex flex-grow-1 mb-4"> </div>
+	</div>
+	<div class="row border border-3 border-secondary-subtle">
+		<h3>Critique</h3>
+	</div>
+</div>
+
+{% endblock %}

@@ -38,6 +38,8 @@ urlpatterns = [
     path('flux/', reviews.views.flux, name='flux'),
     path('posts/', reviews.views.posts, name='posts'),
     path('subscribed/', reviews.views.subscribed, name='subscribed'),
+    path('ticket/add/', reviews.views.create_ticket, name='ticket-add'),
+    path('review/add/', reviews.views.create_review, name='review-add'),
 ]
 
 if settings.DEBUG:

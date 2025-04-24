@@ -5,9 +5,9 @@ from django.db import models
 
 class Ticket(models.Model):
     # Your Ticket model definition goes here
-    title = models.CharField(max_length=100)
+    title = models.CharField("Titre", max_length=100)
     topic = models.CharField(max_length=100)
-    body = models.CharField(max_length=8192)
+    body = models.CharField("Description", max_length=8192)
     user = models.ForeignKey(
         to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="uploads/")
@@ -29,10 +29,11 @@ class Review(models.Model):
 
 class UserFollows(models.Model):
     # Your UserFollows model definition goes here
-
+    user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
     class Meta:
         # ensures we don't get multiple UserFollows instances
         # for unique user-user_followed pairs
         pass
         #unique_together = ('user', 'followed_user', )
-    pass
+
