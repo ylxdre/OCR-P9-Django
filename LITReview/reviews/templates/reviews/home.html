@@ -3,16 +3,16 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="d-flex justify-content-center mt-5">
+		<div class="d-flex justify-content-center my-5">
 			<h2> Bienvenue {{ request.user }}</h2>
 		</div>
 	</div>	
-	<div class="row d-flex align-items-center">
-		<div class="col-6">
-			<a href="{% url 'ticket-add' %}" type="button" class="btn btn-primary">Demander une critique</button>
+	<div class="row d-flex justify-content-center mt-5">
+		<div class="col-3 d-flex justify-content-center">
+			<a href="{% url 'ticket-add' %}" type="button" class="btn btn-primary">Demander une critique</a>
 		</div>
-		<div class="col-6">
-			<a href="{% url 'review-add' %}" type="button" class="btn btn-primary">Créer une critique</button>
+		<div class="col-3 d-flex justify-content-center">
+			<a href="{% url 'review-add' %}" type="button" class="btn btn-primary">Créer une critique</a>
 		</div>
 	</div>
 </div>
