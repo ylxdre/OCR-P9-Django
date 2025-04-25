@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-self-center">
+	<form method="post">
+		{% csrf_token %}
+		<p> Êtes vous sûr de vouloir supprimer {{ ticket.title }} ? </p>
+		<button type="submit" class="btn btn-warning">Supprimer</button>
+	</form>
+{% endblock %}
+
+

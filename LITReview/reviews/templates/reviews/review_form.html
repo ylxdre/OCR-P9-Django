@@ -1,0 +1,13 @@
+<form method='post' enctype='multipart/form-data'>
+        {% csrf_token %}
+        <label for='headline'> Titre: </label>
+        <div class="d-flex justify-content-center mb-4">{{ review_form.headline }}</div>
+        <label for='rating'>Note: </label>
+        <div class="d-flex justify-content-center mb-4">{{ review_form.rating }}</div>
+        <label for='body'>Description: </label>
+        <div class="d-flex justify-content-center mb-4">{{ review_form.body }}</div>
+        <div class="d-flex justify-content-end">
+        <button type='submit' class='btn btn-primary ml-auto'> Envoyer</button>
+        </div>
+</form>
+

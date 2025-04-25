@@ -40,6 +40,13 @@ urlpatterns = [
     path('subscribed/', reviews.views.subscribed, name='subscribed'),
     path('ticket/add/', reviews.views.create_ticket, name='ticket-add'),
     path('review/add/', reviews.views.create_review, name='review-add'),
+    path('ticket/<int:ticket_id>/', reviews.views.ticket, name='ticket-detail'),
+    path('ticket/<int:ticket_id>/update/', reviews.views.update_ticket, name='ticket-update'),
+    path('ticket/<int:ticket_id>/delete/', reviews.views.delete_ticket, name='ticket-delete'),
+    path('review/<int:review_id>/', reviews.views.review, name='review-detail'),
+    path('review/<int:review_id>/update/', reviews.views.update_review, name='review-update'),
+    path('review/<int:review_id>/delete/', reviews.views.delete_review, name='review-delete'),
+    path('confirm/', reviews.views.delete_confirm, name='delete-confirm'),
 ]
 
 if settings.DEBUG:

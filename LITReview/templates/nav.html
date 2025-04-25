@@ -1,0 +1,18 @@
+{% if user.is_authenticated %}
+<ul class="navbar-nav z-index=2">
+	<li class="nav-item">
+		<a href="{% url 'home' %}" class="nav-link {% if navbar == 'home' %}active{% endif %}">Flux</a>
+	</li>
+	<li class="nav-item">
+		<a href="{% url 'posts' %}" class="nav-link {% if navbar == 'posts' %}active{% endif %}">Posts</a>
+	</li>
+	<li class="nav-item">
+		<a href="{% url 'subscribed' %}" class="nav-link {% if navbar == 'subscribed' %}active{% endif %}">Abonnements</a>
+	</li>
+		<form class="form-inline" method="post" action="{% url 'logout' %}">
+			{% csrf_token %}
+		<button type="submit" class="btn btn-light">Se déconnecter</button>
+		</form>
+</ul>
+{% endif %}
+
