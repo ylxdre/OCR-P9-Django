@@ -1,0 +1,10 @@
+<form method='post' enctype='multipart/form-data'>
+        {% csrf_token %}
+	{{ review_form.headline }}
+	{% for radio in review_form.rating %}
+		<div class="radio">
+			{{ radio }}
+		</div>
+	{% endfor %}
+</form>
+

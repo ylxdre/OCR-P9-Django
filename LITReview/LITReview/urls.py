@@ -25,10 +25,10 @@ import authentication.views, reviews.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', reviews.views.home, name='home'),
-#    path('', LoginView.as_view(
-    path('', authentication.views.login_page, name='login'),
-#        template_name='authentication/login.html',
-#        redirect_authenticated_user=True), name='login'),
+    path('', LoginView.as_view(
+#    path('', authentication.views.login_page, name='login'),
+        template_name='authentication/login.html',
+        redirect_authenticated_user=True), name='login'),
     path('pwd-change/', PasswordChangeView.as_view(
         template_name='authentication/pwd_change.html'), name='pwd-change'),
     path('pwd-change-done/', PasswordChangeDoneView.as_view(
@@ -43,6 +43,7 @@ urlpatterns = [
     path('ticket/<int:ticket_id>/', reviews.views.ticket, name='ticket-detail'),
     path('ticket/<int:ticket_id>/update/', reviews.views.update_ticket, name='ticket-update'),
     path('ticket/<int:ticket_id>/delete/', reviews.views.delete_ticket, name='ticket-delete'),
+    path('ticket/<int:ticket_id>/review/', reviews.views.ticket_review, name='review-ticket'),
     path('review/<int:review_id>/', reviews.views.review, name='review-detail'),
     path('review/<int:review_id>/update/', reviews.views.update_review, name='review-update'),
     path('review/<int:review_id>/delete/', reviews.views.delete_review, name='review-delete'),

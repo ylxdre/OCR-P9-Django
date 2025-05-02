@@ -1,0 +1,18 @@
+<div class="row border border-2 border-secondary-subtle my-3">
+	<div class="col-8 mb-4">
+		{% if request.user == review.user %}
+			vous avez publié une critique
+		{% else %}
+			{{ review.user }} a publié une critique
+		{% endif %}
+	</div>
+	<div class="col-4 d-flex justify-content-end">
+		{{ review.time_created }}
+	</div>
+
+	<span style="font-size: 22px">{{ review.headline }} - {{ review.rating }} ★ </span>
+	<p> {{ review.comment }} </p>
+		<div class="d-flex justify-content-center border border-3 mb-3">
+			{% include 'reviews/ticket_detail.html' with ticket=review.ticket %}
+		</div>
+</div>

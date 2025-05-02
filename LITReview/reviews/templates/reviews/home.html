@@ -16,8 +16,16 @@
 		</div>
 	</div>
 	        <div class="row">
-			{% for ticket in tickets %}
-			{% include 'reviews/ticket_detail.html' %}
+					{% for ticket in tickets %}
+						{% include 'reviews/ticket_detail.html' %}
+				<div class="col-6 d-flex justify-content-end mb-2">
+					{% if ticket.review is not True %}
+					<div class="col-4 align-self-end">
+						<a href="{% url 'review-ticket' ticket.id %}" type="button" class="btn btn-primary">Créer une critique</a>
+					</div>
+					{% endif %}
+				</div>
+			</div>
 			{% endfor %}
                 </div>
 

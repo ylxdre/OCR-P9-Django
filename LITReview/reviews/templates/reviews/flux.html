@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
-{% block nav %}
-<nav>
-	<a href="{% url 'flux' %}">Flux</a>
-	<a href="{% url 'posts' %}">Posts</a>
-	<a href="{% url 'subscribed' %}">Abonnements</a>
-	<a href="{% url 'logout' %}">Se déconnecter</a>
-</nav>
-{% endblock %}
+
 {% block content %}
-	<h2>  Flux </h2>
+
+<div class="container">
+	<div class="row">
+		<div class="d-flex justify-content-center mt-5">
+			<h2> FLux </h2>
+		</div>
+	</div>
+	        <div class="row">
+			{% for ticket in tickets %}
+				{% include 'reviews/ticket_detail.html' %}
+				<div class="col-3 align-self-end">
+					<a href="{% url 'review-ticket' ticket.id %}" type="button" class="btn btn-primary">Créer une critique</a>
+				</div>
+			</div>
+			{% endfor %}
+                </div>
+
+</div>
+
 {% endblock %}
