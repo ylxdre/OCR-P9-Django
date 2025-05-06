@@ -20,12 +20,13 @@ packages : python 3.11, python3.11-venv, python3-pip, git
 
 ### Installation
 
-1. Create the virtual environment
+1. Clone this repo and go in the project's directory
+
+2. Create the virtual environment
 ```
 python3.11 -m venv env
 source env/bin/activate
 ```
-2. clone this repo
 
 3. install environment 
 ```
@@ -33,8 +34,13 @@ pip install -r requirements.txt
 ```
 
 ## Execution
+
+1. Go in the Django project directory
 ```
 cd LITReview
+```
+2. Launch the test's server
+```
 python manage.py runserver
 ```
 
