@@ -6,11 +6,9 @@
 		<div class="row h-100 align-items-center">
 			<form method="post">
 				{% csrf_token %}
-				<p> Êtes vous sûr de vouloir supprimer la demande "{{ ticket.title }}" ? </p>
-				<button type="submit" class="btn btn-warning">Supprimer</button>
+				<p> Êtes vous sûr de vouloir vous désabonner de {{ followed.followed_user }} ? </p>
+				<button type="submit" class="btn btn-warning">Confirmer</button>
 			</form>
 		</div>
 </div>
 {% endblock %}
-
-

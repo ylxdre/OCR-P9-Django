@@ -1,12 +1,55 @@
 {% extends 'base.html' %}
-{% block nav %}
-<nav>
-	<a href="{% url 'flux' %}">Flux</a>
-	<a href="{% url 'posts' %}">Posts</a>
-	<a href="{% url 'subscribed' %}">Abonnements</a>
-	<a href="{% url 'logout' %}">Se déconnecter</a>
-</nav>
-{% endblock %}
+
 {% block content %}
-	<h2> Subscribed </h2>
+
+<div class="container text-center">
+	<div class="row d-flex justify-content-center">
+		<div class="d-flex justify-content-center my-5">
+			<h2> Suivre d'autres utilisateurs </h2>
+		</div>
+		<div class="col-6">
+		<form method="post">
+			{% csrf_token %}
+			<div class="form-group">
+				{{ user_form }}
+			</div>
+		</div>
+		<div class="col-2">
+			<button type="submit" class="btn btn-primary">Envoyer</button>
+		</div>
+		</form>
+		</div>
+	</div>
+
+
+	<div class="row d-flex justify-content-end">
+		<div class="d-flex justify-content-center mt-5">
+			<h2> Abonnements </h2>
+		</div>
+
+		{% for user in followed %}
+		<div class="col-6 border border-2 m-1">
+			{{ user.followed_user }}
+		</div>
+		<div class="col-3 m-1">
+			<a href="{% url 'unsubscribe' user.followed_user.id %}" type="button" class="btn btn-primary">Se désabonner</a>
+		</div>
+
+		{% endfor %}
+	</div>
+
+	<div class="row d-flex justify-content-center">
+		<div class="d-flex justify-content-center mt-5">
+			<h2> Abonnés </h2>
+		</div>
+		{% for user in following %}
+		<div class="col-6 border border-2 m-1">
+			{{ user.user }}
+		</div>
+			{% endfor %}
+		</div>
+	</div>
+
+</div>
+
 {% endblock %}
