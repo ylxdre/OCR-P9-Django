@@ -2,7 +2,7 @@
 
 ## LITReview
 
-Build a website (Frontend/Backend) using Django
+Build a website (frontend/backend) using Django
 
 ### Introduction
 
@@ -27,15 +27,20 @@ source env/bin/activate
 ```
 2. clone this repo
 
-3. install environement 
+3. install environment 
+```
+pip install -r requirements.txt
+```
 
 ## Execution
-
-Make sure the API is started (refer to its instructions) then open the index.html in your browser
-
+```
+cd LITReview
+python manage.py runserver
+```
 
 ## Use  
-Browse as any website
+Browse to http://127.0.0.1:8000
+
 
 ## Author
 
