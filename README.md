@@ -39,13 +39,20 @@ pip install -r requirements.txt
 ```
 cd LITReview
 ```
-2. Launch the test's server
+2. Initialize the database
+```
+python manage.py migrate
+```
+3. Launch the test's server
 ```
 python manage.py runserver
 ```
-
 ## Use  
 Browse to http://127.0.0.1:8000
+
+Register/Create a user (or more)  
+Then connect ; you can create a Request or a Review  
+When multiple users exist, you can follow others and see what they've published
 
 
 ## Author
