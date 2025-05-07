@@ -17,6 +17,12 @@ def home(request):
 
 @login_required
 def flux(request):
+    """
+    Display the user's home page
+    Get tickets & reviews of followed users, sort latest first
+    :param: request
+    :return: queryset of sorted tickets and reviews
+    """
     followed = UserFollows.objects.filter(user=request.user)
     users_followed = []
     for userf in followed:
@@ -36,6 +42,12 @@ def flux(request):
 
 @login_required
 def posts(request):
+    """
+    Get list of tickets and reviews of current user
+    :param: request
+    :return: queryset of tickets and reviews
+    """
+
     tickets = Ticket.objects.filter(user=request.user)
     reviews = Review.objects.filter(user=request.user)
     return render(request,
@@ -45,14 +57,23 @@ def posts(request):
 
 @login_required
 def ticket(request, ticket_id):
+    """
+    Get detail of a ticket
+    :param: request, Ticket id
+    :return: object Ticket
+    """
     ticket = Ticket.objects.get(id=ticket_id)
     return render(request,
                   'reviews/ticket.html',
                   {'ticket': ticket})
 
-
 @login_required
 def create_ticket(request):
+    """
+    Send form, retrieve user's data, create and write object Ticket
+    :param: request (POST)
+    :return: form, write Ticket in DB
+    """
     tickets = Ticket.objects.all()
     ticket_form = TicketForm()
     if request.method == 'POST':
@@ -70,6 +91,11 @@ def create_ticket(request):
 @login_required
 @permission_required('review.change_ticket', raise_exception=True)
 def update_ticket(request, ticket_id):
+    """
+    Get new data for a given Ticket id and save changes
+    :param: request, Ticket id
+    :return: form, write Ticket in DB
+    """
     ticket = Ticket.objects.get(id=ticket_id)
     if request.method == 'POST':
         ticket_form = TicketForm(request.POST, instance=ticket)
@@ -87,6 +113,11 @@ def update_ticket(request, ticket_id):
 @login_required
 @permission_required('review.delete_ticket', raise_exception=True)
 def delete_ticket(request, ticket_id):
+    """
+    Delete object from DB for a given Ticket
+    :param: request, Ticket id
+    :return: delete Ticket from DB
+    """
     ticket = Ticket.objects.get(id=ticket_id)
     if request.method == 'POST':
         ticket.delete()
@@ -99,6 +130,11 @@ def delete_ticket(request, ticket_id):
 
 @login_required
 def review(request, review_id):
+    """
+    Get detail of a Review
+    :param: request, Review id
+    :return: object Review
+    """
     review = Review.objects.get(id=review_id)
     return render(request,
                   'reviews/review.html',
@@ -107,6 +143,11 @@ def review(request, review_id):
 
 @login_required
 def create_review(request):
+    """
+    Create Ticket and related Review in one go
+    :param: request (POST)
+    :return: form, write Ticket and Review in DB
+    """
     ticket_form = TicketForm()
     review_form = ReviewForm()
     if request.method == 'POST':
@@ -136,6 +177,11 @@ def create_review(request):
 
 @login_required
 def ticket_review(request, ticket_id):
+    """
+    Create a Review for a given Ticket
+    :param: request (POST), Ticket id
+    :return: form, write Review in DB
+    """
     ticket = Ticket.objects.get(id=ticket_id)
     review_form = ReviewForm()
     if request.method == 'POST':
@@ -160,6 +206,11 @@ def ticket_review(request, ticket_id):
 
 @login_required
 def update_review(request, review_id):
+    """
+    Get new data for a given Review and save changes
+    :param: request, Review id
+    :return: form, write Review in DB
+    """
     review = Review.objects.get(id=review_id)
     if request.method == 'POST':
         print(request.POST)
@@ -177,6 +228,11 @@ def update_review(request, review_id):
 
 @login_required
 def delete_review(request, review_id):
+    """
+    Delete object from DB for a given Review
+    :param: request, Review id
+    :return: delete Review from DB
+    """
     review = Review.objects.get(id=review_id)
     if request.method == 'POST':
         review.delete()
@@ -188,18 +244,26 @@ def delete_review(request, review_id):
 
 @login_required
 def subscribed(request):
+    """
+    Create UserFollows object for a given username in form
+    Create a list of followed_users for current user
+    :param: request (POST with given username)
+    :return: queryset of UserFollows following current user,
+    and a queryset of UserFollows followed by current user
+    """
     follows = UserFollows()
     user_form = ToFollowForm()
+    # list of UserFollows following current user
     following = UserFollows.objects.filter(followed_user=request.user)
     if request.method == 'POST':
         user_form = ToFollowForm(request.POST)
         if user_form.is_valid():
             user = user_form.cleaned_data["user"]
-            user_followed = User.objects.filter(username=user)
-            follows.followed_user = user_followed[0]
+            follows.followed_user = User.objects.get(username=user)
             follows.user = request.user
             follows.save()
             return redirect('subscribed')
+    # list of UserFollows followed by current user
     followed = UserFollows.objects.filter(user=request.user)
     context = {
         'user_form': user_form,
@@ -212,6 +276,11 @@ def subscribed(request):
 
 @login_required
 def unsubscribe(request, followed_user_id):
+    """
+    Delete a UserFollows for a given followed_user
+    :param: request, User.id
+    :return: delete UserFollows from DB
+    """
     followed = UserFollows.objects.get(
         user=request.user,
         followed_user=followed_user_id)

@@ -5,6 +5,11 @@ from authentication.forms import RegisterForm
 
 
 def register_page(request):
+    """
+    Create a User from the register form
+    :param: request (POST with RegisterForm data)
+    :return: write the User in DB
+    """
     form = RegisterForm()
     if request.method == 'POST':
         form = RegisterForm(request.POST)
