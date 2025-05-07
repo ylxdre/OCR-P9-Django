@@ -25,7 +25,6 @@ import reviews.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', reviews.views.home, name='home'),
     path('', LoginView.as_view(
         template_name='authentication/login.html',
         redirect_authenticated_user=True), name='login'),

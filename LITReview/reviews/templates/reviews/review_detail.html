@@ -1,19 +1,25 @@
 {% load reviews_extras %}
 
-<div class="row">
-	<div class="col-8 mb-4">
-			{% display_owner review.user %} publié une critique
-	</div>
-
-	<div class="col-4 d-flex justify-content-end">
-		{{ review.time_created }}
-	</div>
-</div>
-
-<div class="row d-flex justify-content-center">
-	<span style="font-size: 22px" class="mb-3">{{ review.headline }} - {{ review.rating|rating_stars }}</span>
-	<p> {{ review.comment }} </p>
-	<div class="col-10 border border-2 border-secondary-subtle mb-3">
-		{% include 'reviews/ticket_detail.html' with ticket=review.ticket %}
-	</div>
-</div>
+<main>
+	<section>
+		<div class="row" id="owner_date">
+			<div class="col-8 mb-4">
+					{% display_owner review.user %} publié une critique
+			</div>
+			<div class="col-4 d-flex justify-content-end">
+				{{ review.time_created }}
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="row d-flex justify-content-center">
+			<span style="font-size: 22px" class="mb-3">
+				{{ review.headline }} - {{ review.rating|rating_stars }}
+			</span>
+			<p> {{ review.comment }} </p>
+			<div class="col-10 border border-2 border-secondary-subtle mb-3">
+				{% include 'reviews/ticket_detail.html' with ticket=review.ticket %}
+			</div>
+		</div>
+	</section>
+</main>

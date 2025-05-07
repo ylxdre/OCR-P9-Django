@@ -1,16 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div class="container">
-	<div class="row d-flex align-items-center">
-	<h2> Modifier la demande {{ ticket.title }}</h2>
+<main>
+	<div class="container">
+		<div class="row mt-5">
+			<div class="col d-flex justify-content-center">
+				<h2> Modifier la demande "{{ ticket.title }}"</h2>
+			</div>
+		</div>
+		<section>
+			<div class="row border border-3 border-secondary-subtle justify-content-center mt-3">
+				<h3> Livre/Article </h3>
+				<div class="col-4 mb-4">
+					<form method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						{% include 'reviews/ticket_form.html' %}
+					<div class="d-flex justify-content-end">
+						<button type="submit" class="btn btn-primary"> Envoyer </button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</section>
+		</div>
 	</div>
-	<div class="row">
-	{% include 'reviews/ticket_form.html' %}	
-	</div>
-</div>
-
+</main>
 {% endblock %}
 
 

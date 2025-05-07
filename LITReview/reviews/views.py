@@ -8,14 +8,6 @@ from itertools import chain
 
 
 @login_required
-def home(request):
-    tickets = Ticket.objects.all()
-    return render(request,
-                  'reviews/home.html',
-                  {'tickets': tickets})
-
-
-@login_required
 def flux(request):
     """
     Display the user's home page
@@ -67,6 +59,7 @@ def ticket(request, ticket_id):
                   'reviews/ticket.html',
                   {'ticket': ticket})
 
+
 @login_required
 def create_ticket(request):
     """
@@ -107,7 +100,7 @@ def update_ticket(request, ticket_id):
 
     return render(request,
                   'reviews/ticket_update.html',
-                  {'ticket_form': ticket_form})
+                  {'ticket_form': ticket_form, 'ticket': ticket})
 
 
 @login_required

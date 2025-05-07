@@ -2,49 +2,56 @@
 {% load reviews_extras %}
 
 {% block content %}
+<main>
+	<div class="container">
 
-<div class="container">
-
-	<div class="row">
-		<div class="d-flex justify-content-center mt-5">
-			<h2> Bienvenue {{ request.user }}</h2>
-		</div>
-	</div>
-
-	<div class="row d-flex justify-content-center mt-4 mb-3">
-		<div class="col-3 d-flex justify-content-center">
-			<a href="{% url 'ticket-add' %}" type="button" class="btn btn-primary">Demander une critique</a>
-		</div>
-		<div class="col-3 d-flex justify-content-center">
-			<a href="{% url 'review-add' %}" type="button" class="btn btn-primary">Créer une critique</a>
-		</div>
-	</div>
-
-	<div class="row">
-		{% for post in posts %}
-			{% if post.content_type == 'TICKET' %}
-				<div class="row border border-2 border-secondary-subtle my-3">
-					{% include 'reviews/ticket_detail.html' with ticket=post %}
-					<div class="col-6 d-flex justify-content-end mb-2">
-						{% if not post.review %}
-							<div class="col-4 align-self-end">
-								<a href="{% url 'review-ticket' post.id %}" type="button" class="btn btn-primary">Créer une critique</a>
-							</div>
-						{% else %}
-							<div class="col-6 align-self-end">
-								<i>{% display_owner post.review.user %} créé une critique, le {{ post.time_created|date:"d M Y"}}</i>
-							</div>
-						{% endif %}
-					</div>
+		<section>
+			<div class="row" id="atitle">
+				<div class="d-flex justify-content-center mt-5">
+					<h2> Bienvenue {{ request.user }}</h2>
 				</div>
-			{% elif post.content_type == 'REVIEW' %}
-				<div class="row border border-2 border-secondary-subtle my-3">
-					{% include 'reviews/review_detail.html' with review=post %}
-				</div>
-			{% endif %}
-		{% endfor %}
-	</div>
+			</div>
+		</section>
 
-</div>
+		<section>
+			<div class="row d-flex justify-content-center mt-4 mb-3">
+				<div class="col-3 d-flex justify-content-center">
+					<a href="{% url 'ticket-add' %}" type="button" class="btn btn-primary">Demander une critique</a>
+				</div>
+				<div class="col-3 d-flex justify-content-center">
+					<a href="{% url 'review-add' %}" type="button" class="btn btn-primary">Créer une critique</a>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<div class="row" id="flux">
+				{% for post in posts %}
+					{% if post.content_type == 'TICKET' %}
+						<div class="row border border-2 border-secondary-subtle my-3">
+							{% include 'reviews/ticket_detail.html' with ticket=post %}
+							<div class="col-6 d-flex justify-content-end mb-2">
+								{% if not post.review %}
+									<div class="col-4 align-self-end">
+										<a href="{% url 'review-ticket' post.id %}" type="button" class="btn btn-primary">Créer une critique</a>
+									</div>
+								{% else %}
+									<div class="col-6 align-self-end">
+										<i>{% display_owner post.review.user %} créé une critique, le {{ post.time_created|date:"d M Y"}}</i>
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					{% elif post.content_type == 'REVIEW' %}
+						<div class="row border border-2 border-secondary-subtle my-3">
+							{% include 'reviews/review_detail.html' with review=post %}
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</section>
+
+	</div>
+</main>
 
 {% endblock %}

@@ -1,17 +1,21 @@
 {% load reviews_extras %}
 
-<div class="row">
-	<div class="col-8 mb-4">
-		{% display_owner ticket.user %} publié une demande
-	</div>
-	<div class="col-4 d-flex justify-content-end">
-		{{ ticket.time_created }}
-	</div>
-</div>
-
-<p><strong> {{ ticket.title }} </strong></p>
-<p> {{ ticket.desc }} </p>
-
-<div class="col-3 mb-2">
-	<img src="{{ ticket.image.url }}" class="img"   alt="Couverture de {{ ticket.title }}">
-</div>
+<main>
+	<section>
+		<div class="row">
+			<div class="col-8 mb-4">
+				{% display_owner ticket.user %} publié une demande
+			</div>
+			<div class="col-4 d-flex justify-content-end">
+				{{ ticket.time_created }}
+			</div>
+		</div>
+	</section>
+	<section>
+		<p><strong> {{ ticket.title }} </strong></p>
+		<p> {{ ticket.desc }} </p>
+		<div class="col-3 mb-2">
+			<img src="{{ ticket.image.url }}" class="img"   alt="Couverture de {{ ticket.title }}">
+		</div>
+	</section>
+</main>
