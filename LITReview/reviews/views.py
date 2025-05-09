@@ -82,7 +82,6 @@ def create_ticket(request):
 
 
 @login_required
-@permission_required('review.change_ticket', raise_exception=True)
 def update_ticket(request, ticket_id):
     """
     Get new data for a given Ticket id and save changes
@@ -104,7 +103,6 @@ def update_ticket(request, ticket_id):
 
 
 @login_required
-@permission_required('review.delete_ticket', raise_exception=True)
 def delete_ticket(request, ticket_id):
     """
     Delete object from DB for a given Ticket
