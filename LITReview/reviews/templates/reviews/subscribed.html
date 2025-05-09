@@ -12,9 +12,10 @@
 				<div class="col-6">
 				<form method="post">
 					{% csrf_token %}
-					<div class="form-group">
+					<div class="form-group " aria-describedby="followUserHelp">
 						{{ user_form }}
 					</div>
+					<small id="followUserHelp" class="form-text text-muted">Saisissez le nom d'utilisateur à suivre</small>
 				</div>
 				<div class="col-2">
 					<button type="submit" class="btn btn-primary">Envoyer</button>

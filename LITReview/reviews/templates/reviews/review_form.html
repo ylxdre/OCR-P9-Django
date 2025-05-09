@@ -1,11 +1,23 @@
+<div class="form-group mb-4">
 	<label for='headline'>Titre:</label></br>
-	<div class="d-flex justify-content-center mb-4">{{ review_form.headline }}</div>
+	<div class="d-flex justify-content-center" aria-describedby="titleHelp">
+		{{ review_form.headline }}
+ 	</div>
+	<small id="titleHelp" class="form-text text-muted">Saisissez le titre de votre critique</small>
+</div>
+<div class="form-group mb-4">
 	<label for='rating'>Note: </label>
-	<div class=" d-flex justify-content-around mb-4">
+	<div class=" d-flex justify-content-around" aria-describedby="ratingHelp">
 			{% for choice in review_form.rating %}
 				<span>{{ choice }}</span>
 			{% endfor %}
 	</div>
+	<small id="ratingHelp" class="form-text text-muted">Sélectionnez une notre entre 0 et 5</small>
+</div>
+<div class="form-group mb-4">
 	<label for="comment">Commentaire: </label>
-	<div class="d-flex justify-content-center mb-4">{{ review_form.comment }}</div>
-
+	<div class="d-flex justify-content-center" aria-describedby="commentHelp">
+		{{ review_form.comment }}
+	</div>
+	<small id="commentHelp" class="form-text text-muted">Saisissez le corps de votre commentaire</small>
+</div>

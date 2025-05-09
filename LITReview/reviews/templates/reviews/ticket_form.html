@@ -1,6 +1,21 @@
-<label for='title'> Titre: </label>
-<div class="d-flex justify-content-center mb-4">{{ ticket_form.title }}</div>
-<label for='desc'>Description: </label>
-<div class="d-flex justify-content-center mb-4">{{ ticket_form.desc }}</div>
-<label for='image'>Image: </label>
-<div class="d-flex justify-content-center mb-4">{{ ticket_form.image }}</div>
+<div class="form-group mb-4">
+    <label for='title'> Titre: </label>
+    <div class="d-flex justify-content-center" aria-describedby="titleHelp">
+        {{ ticket_form.title }}
+    </div>
+    <small id="titleHelp" class="form-text text-muted">Saisissez le titre de votre demande</small>
+</div>
+<div class="form-group mb-4">
+    <label for='desc'>Description: </label>
+    <div class="d-flex justify-content-center" aria-describedby="descriptionHelp">
+        {{ ticket_form.desc }}
+    </div>
+    <small id="descriptionHelp" class="form-text text-muted">Saisissez le contenu de votre demande</small>
+</div>
+<div class="form-group mb-4">
+    <label for='image'>Image: </label>
+    <div class="d-flex justify-content-center" aria-describedby="imageHelp">
+        {{ ticket_form.image }}
+    </div>
+    <small id="imageHelp" class="form-text text-muted">Sélectionnez une image à joindre (couverture de livre)</small>
+</div>

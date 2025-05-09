@@ -10,7 +10,6 @@
 				<div class="align-self-center">
 					<h2>Inscrivez-vous</h2>
 				</div>
-
 				<div class="justify-content-end">
 					<a href="{% url 'register' %}" type="button" class="btn btn-primary">S'inscrire</a>
 				</div>
@@ -23,12 +22,14 @@
 					<h2>Connectez-vous</h2>
 					<form method='post'>
 						{% csrf_token %}
-						<div class="form-group p-3">
+						<div class="form-group" aria-describedby="usernameHelp">
 							{{ form.username }}
 						</div>
-						<div class="form-group p-3">
+						<small id="usernameHelp" class="form-text text-muted">Saisissez ici votre nom d'utilisateur</small>
+						<div class="form-group" aria-describedby="passwordHelp">
 							{{ form.password }}
 						</div>
+						<small id="passwordHelp" class="form-text text-muted">Saisissez ici votre mot de passe</small>
 						<div class="d-flex justify-content-end">
 							<button type="submit" class="btn btn-primary">Se connecter</button>
 						</div>
